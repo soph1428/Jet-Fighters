@@ -153,7 +153,7 @@ function enterKeyPressNickname(event) {
         nicknameTextFont = "0px arial";
         colors.removeChild(nicknameinput);
         clearInterval(drawintro);
-        createARoomTextFont = "50px arial";
+        createARoomTextFont = "38px arial";
         var createARoomTextInterval = setInterval(function() {
             createARoomText();
         }, 0);
@@ -708,7 +708,7 @@ function createARoomText() {
 
     ctx.fillStyle = "black";
     ctx.font = createARoomTextFont;
-    ctx.fillText("Create a Game Code", 10, 200);
+    ctx.fillText("Create or Join a Game Code", 10, 200);
 }
 
 red.onclick = redClick;
