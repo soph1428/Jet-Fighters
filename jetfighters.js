@@ -95,13 +95,13 @@ if (localStorage.getItem("name") != null) {
     nicknameinput.value = nickname;
     roominput.value = code;
     setTimeout(function() {
-    nicknameinput.dispatchEvent(new KeyboardEvent("keypress", {
+    nicknameinput.dispatchEvent(new KeyboardEvent("keydown", {
         "keyCode": "13"
     }));
     }, 250);
-    nicknameinput.onkeypress = enterKeyPressNickname;
+    nicknameinput.onkeydown = enterKeyPressNickname;
     setTimeout(function() {
-    roominput.dispatchEvent(new KeyboardEvent("keypress", {
+    roominput.dispatchEvent(new KeyboardEvent("keydown", {
         "key": "Enter"
     }));
     }, 250);
@@ -132,7 +132,7 @@ function drawGame() {
     ctx.font = gameCodeFont = "30px arial";
     ctx.fillText("Code: " + roominput.value, 125, 25);
 
-    window.document.removeEventListener("keypress", enterKeyPressNickname);
+    window.document.removeEventListener("keydown", enterKeyPressNickname);
     
     //Plane1
     ctx.drawImage(plane1, x1, y1, width1, height1);
@@ -164,7 +164,7 @@ function enterKeyPressNickname(event) {
         roominput.style.borderWidth = "10px";
         roominput.style.fontSize = "30px";
         colors.appendChild(roominput);
-        roominput.addEventListener("keypress", (e) => {
+        roominput.addEventListener("keydown", (e) => {
             if (e.key == "Enter") {
                 if (roominput.value == "") {
                     return;
@@ -272,175 +272,104 @@ function enterKeyPressNickname(event) {
                 var bulletSpeed = 40;
                 score1FillStyle = plane1Fillstyle;
                 score2FillStyle = plane2FillStyle;
-                document.addEventListener("keydown", moveUp);
-                document.addEventListener("keyup", stopUp);
-                function moveUp(e) {
-                    if (e.code == "ArrowUp") {
+                document.addEventListener("keydown", (e) => {
+                    if (e.code == "ArrowUp") { moveUp(); }});
+                document.addEventListener("keyup", (e) => {
+                    if (e.code == "ArrowUp") { stopUp(); }});
+                function moveUp() {
                         if (name1 == planeName1) {
                             socket.emit("startMovingUp1");
                         }
                         if (name1 == name2) {
                             socket.emit("startMovingUp2");
                         }
-                    }
                 }
-                function stopUp(e) {
-                    if (e.code == "ArrowUp") {
+                function stopUp() {
                         if (name1 == planeName1) {
                             socket.emit("stopMovingUp1");
                         }
                         if (name1 == name2) {
                             socket.emit("stopMovingUp2");
                         }
-                    }
                 }
-                document.addEventListener("keydown", moveDown);
-                document.addEventListener("keyup", stopDown);
-                function moveDown(e) {
-                    if (e.code == "ArrowDown") {
+                document.addEventListener("keydown", (e) => {
+                    if (e.code == "ArrowDown") { moveDown(); }});
+                document.addEventListener("keyup", (e) => {
+                    if (e.code == "ArrowDown") { stopDown(); }});
+                function moveDown() {
                         if (name1 == planeName1) {
                             socket.emit("startMovingDown1");
                         }
                         if (name1 == name2) {
                             socket.emit("startMovingDown2");
                         }
-                    }
                 }
-                function stopDown(e) {
-                    if (e.code == "ArrowDown") {
+                function stopDown() {
                         if (name1 == planeName1) {
                             socket.emit("stopMovingDown1");
                         }
                         if (name1 == name2) {
                             socket.emit("stopMovingDown2");
                         }
-                    }
                 }
-                document.addEventListener("keydown", moveRight);
-                document.addEventListener("keyup", stopRight);
-                function moveRight(e) {
-                    if (e.code == "ArrowLeft") {
+                document.addEventListener("keydown", (e) => {
+                    if (e.code == "ArrowLeft") { moveRight(); }});
+                document.addEventListener("keyup", (e) => {
+                    if (e.code == "ArrowLeft") { stopRight(); }});
+                function moveRight() {
                         if (name1 == planeName1) {
                             socket.emit("startMovingRight1");
                         }
                         if (name1 == name2) {
                             socket.emit("startMovingRight2");
                         }
-                    }
                 }
-                function stopRight(e) {
-                    if (e.code == "ArrowLeft") {
+                function stopRight() {
                         if (name1 == planeName1) {
                             socket.emit("stopMovingRight1");
                         }
                         if (name1 == name2) {
                             socket.emit("stopMovingRight2");
                         }
-                    }
                 }
-                document.addEventListener("keydown", moveLeft);
-                document.addEventListener("keyup", stopLeft);
-                function moveLeft(e) {
-                    if (e.code == "ArrowRight") {
+                document.addEventListener("keydown", (e) => {
+                    if (e.code == "ArrowRight") { moveLeft(); }});
+                document.addEventListener("keyup", (e) => {
+                    if (e.code == "ArrowRight") { stopLeft(); }});
+                function moveLeft() {
                         if (name1 == planeName1) {
                             socket.emit("startMovingLeft1");
                         }
                         if (name1 == name2) {
                             socket.emit("startMovingLeft2");
                         }
-                    }
                 }
-                function stopLeft(e) {
-                    if (e.code == "ArrowRight") {
+                function stopLeft() {
                         if (name1 == planeName1) {
                             socket.emit("stopMovingLeft1");
                         }
                         if (name1 == name2) {
                             socket.emit("stopMovingLeft2");
                         }
-                    }
                 }
-                moveUpButton.addEventListener("touchstart", () => {
-                    document.dispatchEvent(new KeyboardEvent("keydown", {
-                        "code": "ArrowUp"
-                    }));
-                });
-                moveUpButton.addEventListener("touchend", () => {
-                    document.dispatchEvent(new KeyboardEvent("keyup", {
-                        "code": "ArrowUp"
-                    }));
-                });
-                moveDownButton.addEventListener("touchstart", () => {
-                    document.dispatchEvent(new KeyboardEvent("keydown", {
-                        "code": "ArrowDown"
-                    }));
-                });
-                moveDownButton.addEventListener("touchend", () => {
-                    document.dispatchEvent(new KeyboardEvent("keyup", {
-                        "code": "ArrowDown"
-                    }));
-                });
-                moveRightButton.addEventListener("touchstart", () => {
-                    document.dispatchEvent(new KeyboardEvent("keydown", {
-                        "code": "ArrowLeft"
-                    }));
-                });
-                moveRightButton.addEventListener("touchend", () => {
-                    document.dispatchEvent(new KeyboardEvent("keyup", {
-                        "code": "ArrowLeft"
-                    }));
-                });
-                moveLeftButton.addEventListener("touchstart", () => {
-                    document.dispatchEvent(new KeyboardEvent("keydown", {
-                        "code": "ArrowRight"
-                    }));
-                });
-                moveLeftButton.addEventListener("touchend", () => {
-                    document.dispatchEvent(new KeyboardEvent("keyup", {
-                        "code": "ArrowRight"
-                    }));
-                });
-                moveUpButton.addEventListener("mousedown", () => {
-                    document.dispatchEvent(new KeyboardEvent("keydown", {
-                        "code": "ArrowUp"
-                    }));
-                });
-                moveUpButton.addEventListener("mouseup", () => {
-                    document.dispatchEvent(new KeyboardEvent("keyup", {
-                        "code": "ArrowUp"
-                    }));
-                });
-                moveDownButton.addEventListener("mousedown", () => {
-                    document.dispatchEvent(new KeyboardEvent("keydown", {
-                        "code": "ArrowDown"
-                    }));
-                });
-                moveDownButton.addEventListener("mouseup", () => {
-                    document.dispatchEvent(new KeyboardEvent("keyup", {
-                        "code": "ArrowDown"
-                    }));
-                });
-                moveRightButton.addEventListener("mousedown", () => {
-                    document.dispatchEvent(new KeyboardEvent("keydown", {
-                        "code": "ArrowLeft"
-                    }));
-                });
-                moveRightButton.addEventListener("mouseup", () => {
-                    document.dispatchEvent(new KeyboardEvent("keyup", {
-                        "code": "ArrowLeft"
-                    }));
-                });
-                moveLeftButton.addEventListener("mousedown", () => {
-                    document.dispatchEvent(new KeyboardEvent("keydown", {
-                        "code": "ArrowRight"
-                    }));
-                });
-                moveLeftButton.addEventListener("mouseup", () => {
-                    document.dispatchEvent(new KeyboardEvent("keyup", {
-                        "code": "ArrowRight"
-                    }));
-                });
-                var bulletMobile1 = true;
+                moveUpButton.addEventListener("touchstart", moveUp);
+                moveUpButton.addEventListener("touchend", stopUp);
+                moveDownButton.addEventListener("touchstart", moveDown);
+                moveDownButton.addEventListener("touchend", stopDown);
+                moveRightButton.addEventListener("touchstart", moveRight);
+                moveRightButton.addEventListener("touchend", stopRight);
+                moveLeftButton.addEventListener("touchstart", moveLeft);
+                moveLeftButton.addEventListener("touchend", stopLeft);
+                moveUpButton.addEventListener("mousedown", moveUp);
+                moveUpButton.addEventListener("mouseup", stopUp);
+                moveDownButton.addEventListener("mousedown", moveDown);
+                moveDownButton.addEventListener("mouseup", stopDown);
+                moveRightButton.addEventListener("mousedown", moveRight);
+                moveRightButton.addEventListener("mouseup", stopRight);
+                moveLeftButton.addEventListener("mousedown", moveLeft);
+                moveLeftButton.addEventListener("mouseup", stopLeft);
+                var bulletCountMobile1 = 0;
+                var bulletCountMobile2 = 0;
                     canvas.addEventListener("mouseup", shootBullet1);
                     canvas.addEventListener("touchend", shootBulletMobile1);
                     canvas.addEventListener("mouseup", shootBullet2);
@@ -456,8 +385,13 @@ function enterKeyPressNickname(event) {
                     }
                 }
                 function shootBulletMobile1(mouse) {
-                    if (name1 == planeName1 && bulletMobile1) {
-                        bulletMobile1 = false;
+                    if (setTimeout(() => {
+                        if (bulletCountMobile1 > 1) {
+                            return false;
+                        }
+                    }, 100)) { return; }
+                    if (name1 == planeName1) {
+                        bulletCountMobile1++;
                     var mouseX = mouse.changedTouches[0].clientX - canvas.getBoundingClientRect().left - 7.5;
                     var mouseY = mouse.changedTouches[0].clientY - canvas.getBoundingClientRect().top - 7.5;
                         socket.emit("moveBullet1", {
@@ -477,7 +411,13 @@ function enterKeyPressNickname(event) {
                     }
                 }
                 function shootBulletMobile2(mouse) {
+                    if (setTimeout(() => {
+                        if (bulletCountMobile2 > 1) {
+                            return false;
+                        }
+                    }, 100)) { return; }
                     if (name1 == name2) {
+                        bulletCountMobile2++;
                     var mouseX = mouse.changedTouches[0].clientX - canvas.getBoundingClientRect().left - 7.5;
                     var mouseY = mouse.changedTouches[0].clientY - canvas.getBoundingClientRect().top - 7.5;
                     socket.emit("moveBullet2", {
@@ -486,7 +426,7 @@ function enterKeyPressNickname(event) {
                     });
                     }
                 }
-                    window.document.removeEventListener("keypress", enterKeyPressNickname);
+                    window.document.removeEventListener("keydown", enterKeyPressNickname);
                     plane2.addEventListener("load", gameState);
                     function gameState() {
                             var gameStateAnimation = requestAnimationFrame(gameState);
@@ -801,7 +741,7 @@ function redClick() {
     colors.appendChild(nicknameinput);
     plane1.src = "planered.png";
     plane1FillStyle = "red";
-    nicknameinput.addEventListener("keypress", enterKeyPressNickname);
+    nicknameinput.addEventListener("keydown", enterKeyPressNickname);
 }
 
 function orangeClick() {
@@ -824,7 +764,7 @@ function orangeClick() {
     colors.appendChild(nicknameinput);
     plane1.src = "planeorange.png";
     plane1FillStyle = "orange";
-    nicknameinput.addEventListener("keypress", enterKeyPressNickname);
+    nicknameinput.addEventListener("keydown", enterKeyPressNickname);
 }
 
 function goldClick() {
@@ -847,7 +787,7 @@ function goldClick() {
     colors.appendChild(nicknameinput);
     plane1.src = "planegold.png";
     plane1FillStyle = "gold";
-    nicknameinput.addEventListener("keypress", enterKeyPressNickname);
+    nicknameinput.addEventListener("keydown", enterKeyPressNickname);
 }
 
 function greenClick() {
@@ -870,7 +810,7 @@ function greenClick() {
     colors.appendChild(nicknameinput);
     plane1.src = "planegreen.png";
     plane1FillStyle = "green";
-    nicknameinput.addEventListener("keypress", enterKeyPressNickname);
+    nicknameinput.addEventListener("keydown", enterKeyPressNickname);
 }
 
 function blueClick() {
@@ -893,7 +833,7 @@ function blueClick() {
     colors.appendChild(nicknameinput);
     plane1.src = "planeblue.png";
     plane1FillStyle = "blue";
-    nicknameinput.addEventListener("keypress", enterKeyPressNickname);
+    nicknameinput.addEventListener("keydown", enterKeyPressNickname);
 }
 
 function purpleClick() {
@@ -916,7 +856,7 @@ function purpleClick() {
     colors.appendChild(nicknameinput);
     plane1.src = "planepurple.png";
     plane1FillStyle = "purple";
-    nicknameinput.addEventListener("keypress", enterKeyPressNickname);
+    nicknameinput.addEventListener("keydown", enterKeyPressNickname);
 }
 
 function pinkClick() {
@@ -939,7 +879,7 @@ function pinkClick() {
     colors.appendChild(nicknameinput);
     plane1.src = "planepink.png";
     plane1FillStyle = "pink";
-    nicknameinput.addEventListener("keypress", enterKeyPressNickname);
+    nicknameinput.addEventListener("keydown", enterKeyPressNickname);
 }
 
 function blackClick() {
@@ -962,7 +902,7 @@ function blackClick() {
     colors.appendChild(nicknameinput);
     plane1.src = "planeblack.png";
     plane1FillStyle = "black";
-    nicknameinput.addEventListener("keypress", enterKeyPressNickname);
+    nicknameinput.addEventListener("keydown", enterKeyPressNickname);
 }
 
 function greyClick() {
@@ -985,5 +925,5 @@ function greyClick() {
     colors.appendChild(nicknameinput);
     plane1.src = "planegrey.png";
     plane1FillStyle = "grey";
-    nicknameinput.addEventListener("keypress", enterKeyPressNickname);
+    nicknameinput.addEventListener("keydown", enterKeyPressNickname);
 }
