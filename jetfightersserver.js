@@ -2,16 +2,12 @@ const express = require("express");
 const app = express();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http);
-
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/jetfighters.html");
 });
-
 app.use(express.static(__dirname));
-
 const codes = [];
 const planes = {};
-
 io.on("connection", (socket) => {
   console.log("a user has connected");
   socket.on("new game", (code) => {
@@ -152,7 +148,6 @@ io.on("connection", (socket) => {
     console.log(planes);
     }
   }
-
   if (io.engine.clientsCount === 1) {
   socket.join(gameInput);
     console.log("a user has created a room");
@@ -210,7 +205,6 @@ io.on("connection", (socket) => {
 });
 });
 });
-
 http.listen(process.env.PORT || 5500, "0.0.0.0", () => {
   console.log("listening on server");
 });

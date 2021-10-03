@@ -1,6 +1,5 @@
 const canvas = window.document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
-
 var newgame = document.getElementById("newgame");
 newgame.style.left = `${canvas.getBoundingClientRect().left + window.scrollX + canvas.width + 20}px`;
 newgame.style.top = `${canvas.getBoundingClientRect().top + window.scrollY + canvas.height - 150}px`;
@@ -13,9 +12,7 @@ var sound = document.createElement("audio");
 sound.src = "mixkit-body-punch-quick-hit-2153.wav";
 var bullets1 = [];
 var bullets2 = [];
-
 keysText.style.marginTop = `${canvas.getBoundingClientRect().top + window.scrollY + canvas.height - 80}px`;
-
 let pickAColorFont = "80px arial";
 let nicknameTextFont = "0px arial";
 let nicknameFont = "0px arial";
@@ -40,7 +37,6 @@ let rightPressed1 = false;
 let rightPressed2 = false;
 let leftPressed1 = false;
 let leftPressed2 = false;
-
 var colors = document.getElementById("colors");
 var red = document.getElementById("red");
 red.style.left = `${canvas.getBoundingClientRect().left + window.scrollX + 100}px`;
@@ -69,7 +65,6 @@ black.style.top = "320px";
 var grey = document.getElementById("grey");
 grey.style.left = `${canvas.getBoundingClientRect().left + window.scrollX + 227.5}px`;
 grey.style.top = "400px";
-
 //plane1
 this.plane1 = new Image();
 this.plane1.src = "plane.png";
@@ -79,11 +74,9 @@ this.width1 = 55;
 this.height1 = 55;
 this.name1X = this.x1 - 3;
 this.name1Y = this.y1 + 3;
-
 var drawintro = setInterval(function() {
     drawIntro();
 }, 0);
-
 if (localStorage.getItem("name") != null) {
     var color = document.getElementById(localStorage.getItem("color"));
     var nickname = localStorage.getItem("name");
@@ -109,15 +102,12 @@ if (localStorage.getItem("name") != null) {
     localStorage.clear();
     }, 250);
 }
-
 function drawIntro() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
     //pickAColor
     ctx.fillStyle = "black";
     ctx.font = pickAColorFont;
     ctx.fillText("Pick a Color", 35, 200);
-
     //enterANicknameText
     ctx.fillStyle = "black";
     ctx.font = nicknameTextFont;
@@ -126,21 +116,17 @@ function drawIntro() {
 
 function drawGame() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
     //gameCode
     ctx.fillStyle = "black";
     ctx.font = gameCodeFont = "30px arial";
     ctx.fillText("Code: " + roominput.value, 125, 25);
-
     window.document.removeEventListener("keydown", enterKeyPressNickname);
-    
     //Plane1
     ctx.drawImage(plane1, x1, y1, width1, height1);
     ctx.fillStyle = plane1FillStyle;
     ctx.font = nicknameFont;
     ctx.fillText(name1, name1X, name1Y);
 }
-
 function enterKeyPressNickname(event) {
     if (event.keyCode == 13) {
         if (nicknameinput.value == "") {
@@ -702,15 +688,12 @@ function enterKeyPressNickname(event) {
 });
     }
 }
-
 function createARoomText() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
     ctx.fillStyle = "black";
     ctx.font = createARoomTextFont;
     ctx.fillText("Create or Join a Game Code", 10, 200);
 }
-
 red.onclick = redClick;
 orange.onclick = orangeClick;
 gold.onclick = goldClick;
@@ -720,7 +703,6 @@ purple.onclick = purpleClick;
 pink.onclick = pinkClick;
 black.onclick = blackClick;
 grey.onclick = greyClick;
-
 function redClick() {
     pickAColorFont = "0px arial";
     red.style.display = "none";
@@ -743,7 +725,6 @@ function redClick() {
     plane1FillStyle = "red";
     nicknameinput.addEventListener("keydown", enterKeyPressNickname);
 }
-
 function orangeClick() {
     pickAColorFont = "0px arial";
     red.style.display = "none";
@@ -766,7 +747,6 @@ function orangeClick() {
     plane1FillStyle = "orange";
     nicknameinput.addEventListener("keydown", enterKeyPressNickname);
 }
-
 function goldClick() {
     pickAColorFont = "0px arial";
     red.style.display = "none";
@@ -789,7 +769,6 @@ function goldClick() {
     plane1FillStyle = "gold";
     nicknameinput.addEventListener("keydown", enterKeyPressNickname);
 }
-
 function greenClick() {
     pickAColorFont = "0px arial";
     red.style.display = "none";
@@ -812,7 +791,6 @@ function greenClick() {
     plane1FillStyle = "green";
     nicknameinput.addEventListener("keydown", enterKeyPressNickname);
 }
-
 function blueClick() {
     pickAColorFont = "0px arial";
     red.style.display = "none";
@@ -835,7 +813,6 @@ function blueClick() {
     plane1FillStyle = "blue";
     nicknameinput.addEventListener("keydown", enterKeyPressNickname);
 }
-
 function purpleClick() {
     pickAColorFont = "0px arial";
     red.style.display = "none";
@@ -858,7 +835,6 @@ function purpleClick() {
     plane1FillStyle = "purple";
     nicknameinput.addEventListener("keydown", enterKeyPressNickname);
 }
-
 function pinkClick() {
     pickAColorFont = "0px arial";
     red.style.display = "none";
@@ -881,7 +857,6 @@ function pinkClick() {
     plane1FillStyle = "pink";
     nicknameinput.addEventListener("keydown", enterKeyPressNickname);
 }
-
 function blackClick() {
     pickAColorFont = "0px arial";
     red.style.display = "none";
@@ -904,7 +879,6 @@ function blackClick() {
     plane1FillStyle = "black";
     nicknameinput.addEventListener("keydown", enterKeyPressNickname);
 }
-
 function greyClick() {
     pickAColorFont = "0px arial";
     red.style.display = "none";
