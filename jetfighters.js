@@ -259,9 +259,9 @@ function enterKeyPressNickname(event) {
                 score1FillStyle = plane1Fillstyle;
                 score2FillStyle = plane2FillStyle;
                 document.addEventListener("keydown", (e) => {
-                    if (e.code == "ArrowUp") { moveUp(); }});
+                    if (e.key == "ArrowUp" || e.key == "w") { moveUp(); }});
                 document.addEventListener("keyup", (e) => {
-                    if (e.code == "ArrowUp") { stopUp(); }});
+                    if (e.key == "ArrowUp" || e.key == "w") { stopUp(); }});
                 function moveUp() {
                         if (name1 == planeName1) {
                             socket.emit("startMovingUp1");
@@ -279,9 +279,9 @@ function enterKeyPressNickname(event) {
                         }
                 }
                 document.addEventListener("keydown", (e) => {
-                    if (e.code == "ArrowDown") { moveDown(); }});
+                    if (e.key == "ArrowDown" || e.key == "s") { moveDown(); }});
                 document.addEventListener("keyup", (e) => {
-                    if (e.code == "ArrowDown") { stopDown(); }});
+                    if (e.key == "ArrowDown" || e.key == "s") { stopDown(); }});
                 function moveDown() {
                         if (name1 == planeName1) {
                             socket.emit("startMovingDown1");
@@ -299,9 +299,9 @@ function enterKeyPressNickname(event) {
                         }
                 }
                 document.addEventListener("keydown", (e) => {
-                    if (e.code == "ArrowLeft") { moveRight(); }});
+                    if (e.key == "ArrowLeft" || e.key == "a") { moveRight(); }});
                 document.addEventListener("keyup", (e) => {
-                    if (e.code == "ArrowLeft") { stopRight(); }});
+                    if (e.key == "ArrowLeft" || e.key == "a") { stopRight(); }});
                 function moveRight() {
                         if (name1 == planeName1) {
                             socket.emit("startMovingRight1");
@@ -319,9 +319,9 @@ function enterKeyPressNickname(event) {
                         }
                 }
                 document.addEventListener("keydown", (e) => {
-                    if (e.code == "ArrowRight") { moveLeft(); }});
+                    if (e.key == "ArrowRight" || e.key == "d") { moveLeft(); }});
                 document.addEventListener("keyup", (e) => {
-                    if (e.code == "ArrowRight") { stopLeft(); }});
+                    if (e.key == "ArrowRight" || e.key == "d") { stopLeft(); }});
                 function moveLeft() {
                         if (name1 == planeName1) {
                             socket.emit("startMovingLeft1");
