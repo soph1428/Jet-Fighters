@@ -1,8 +1,6 @@
 const canvas = window.document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 var newgame = document.getElementById("newgame");
-newgame.style.left = `${canvas.getBoundingClientRect().left + window.scrollX + canvas.width + 20}px`;
-newgame.style.top = `${canvas.getBoundingClientRect().top + window.scrollY + canvas.height - 150}px`;
 var keysText = document.getElementById("keysText");
 var moveUpButton = document.createElement("button");
 var moveRightButton = document.createElement("button");
@@ -12,7 +10,6 @@ var sound = document.createElement("audio");
 sound.src = "mixkit-body-punch-quick-hit-2153.wav";
 var bullets1 = [];
 var bullets2 = [];
-keysText.style.marginTop = `${canvas.getBoundingClientRect().top + window.scrollY + canvas.height - 80}px`;
 let pickAColorFont = "80px arial";
 let nicknameTextFont = "0px arial";
 let nicknameFont = "0px arial";
@@ -39,32 +36,39 @@ let leftPressed1 = false;
 let leftPressed2 = false;
 var colors = document.getElementById("colors");
 var red = document.getElementById("red");
+var orange = document.getElementById("orange");
+var gold = document.getElementById("gold");
+var green = document.getElementById("green");
+var blue = document.getElementById("blue");
+var purple = document.getElementById("purple");
+var pink = document.getElementById("pink");
+var black = document.getElementById("black");
+var grey = document.getElementById("grey");
+layoutForSizes()
+window.addEventListener("resize", layoutForSizes)
+function layoutForSizes() {
+newgame.style.left = `${canvas.getBoundingClientRect().left + window.scrollX + canvas.width + 20}px`;
+newgame.style.top = `${canvas.getBoundingClientRect().top + window.scrollY + canvas.height - 150}px`;
+keysText.style.marginTop = `${canvas.getBoundingClientRect().top + window.scrollY + canvas.height - 80}px`;
 red.style.left = `${canvas.getBoundingClientRect().left + window.scrollX + 100}px`;
 red.style.top = "240px";
-var orange = document.getElementById("orange");
 orange.style.left = `${canvas.getBoundingClientRect().left + window.scrollX + 185}px`;
 orange.style.top = "240px";
-var gold = document.getElementById("gold");
 gold.style.left = `${canvas.getBoundingClientRect().left + window.scrollX + 270}px`;
 gold.style.top = "240px";
-var green = document.getElementById("green");
 green.style.left = `${canvas.getBoundingClientRect().left + window.scrollX + 355}px`;
 green.style.top = "240px";
-var blue = document.getElementById("blue");
 blue.style.left = `${canvas.getBoundingClientRect().left + window.scrollX + 100}px`;
 blue.style.top = "320px";
-var purple = document.getElementById("purple");
 purple.style.left = `${canvas.getBoundingClientRect().left + window.scrollX + 185}px`;
 purple.style.top = "320px";
-var pink = document.getElementById("pink");
 pink.style.left = `${canvas.getBoundingClientRect().left + window.scrollX + 270}px`;
 pink.style.top = "320px";
-var black = document.getElementById("black");
 black.style.left = `${canvas.getBoundingClientRect().left + window.scrollX + 355}px`;
 black.style.top = "320px";
-var grey = document.getElementById("grey");
 grey.style.left = `${canvas.getBoundingClientRect().left + window.scrollX + 227.5}px`;
 grey.style.top = "400px";
+}
 //plane1
 this.plane1 = new Image();
 this.plane1.src = "plane.png";
