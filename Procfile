@@ -1,1 +1,1 @@
-web:node jetfightersserver.js
+web:npm start
