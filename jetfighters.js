@@ -263,9 +263,9 @@ function enterKeyPressNickname(event) {
                 score1FillStyle = plane1Fillstyle;
                 score2FillStyle = plane2FillStyle;
                 document.addEventListener("keydown", (e) => {
-                    if (e.key == "ArrowUp" || e.key == "w") { moveUp(); }});
+                    if (e.key == "ArrowUp" || e.key == "w") { e.preventDefault(); moveUp(); }});
                 document.addEventListener("keyup", (e) => {
-                    if (e.key == "ArrowUp" || e.key == "w") { stopUp(); }});
+                    if (e.key == "ArrowUp" || e.key == "w") { e.preventDefault(); stopUp(); }});
                 function moveUp() {
                         if (name1 == planeName1) {
                             socket.emit("startMovingUp1");
@@ -283,9 +283,9 @@ function enterKeyPressNickname(event) {
                         }
                 }
                 document.addEventListener("keydown", (e) => {
-                    if (e.key == "ArrowDown" || e.key == "s") { moveDown(); }});
+                    if (e.key == "ArrowDown" || e.key == "s") { e.preventDefault(); moveDown(); }});
                 document.addEventListener("keyup", (e) => {
-                    if (e.key == "ArrowDown" || e.key == "s") { stopDown(); }});
+                    if (e.key == "ArrowDown" || e.key == "s") { e.preventDefault(); stopDown(); }});
                 function moveDown() {
                         if (name1 == planeName1) {
                             socket.emit("startMovingDown1");
@@ -303,9 +303,9 @@ function enterKeyPressNickname(event) {
                         }
                 }
                 document.addEventListener("keydown", (e) => {
-                    if (e.key == "ArrowLeft" || e.key == "a") { moveRight(); }});
+                    if (e.key == "ArrowLeft" || e.key == "a") { e.preventDefault(); moveRight(); }});
                 document.addEventListener("keyup", (e) => {
-                    if (e.key == "ArrowLeft" || e.key == "a") { stopRight(); }});
+                    if (e.key == "ArrowLeft" || e.key == "a") { e.preventDefault(); stopRight(); }});
                 function moveRight() {
                         if (name1 == planeName1) {
                             socket.emit("startMovingRight1");
@@ -323,9 +323,9 @@ function enterKeyPressNickname(event) {
                         }
                 }
                 document.addEventListener("keydown", (e) => {
-                    if (e.key == "ArrowRight" || e.key == "d") { moveLeft(); }});
+                    if (e.key == "ArrowRight" || e.key == "d") { e.preventDefault(); moveLeft(); }});
                 document.addEventListener("keyup", (e) => {
-                    if (e.key == "ArrowRight" || e.key == "d") { stopLeft(); }});
+                    if (e.key == "ArrowRight" || e.key == "d") { e.preventDefault(); stopLeft(); }});
                 function moveLeft() {
                         if (name1 == planeName1) {
                             socket.emit("startMovingLeft1");
