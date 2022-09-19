@@ -165,9 +165,9 @@ function enterKeyPressNickname(event) {
                 colors.removeChild(roominput);
                 nicknameFont = "20px arial";
                 clearInterval(createARoomTextInterval);
-                // Heroku: https://games-jetfighters.herokuapp.com
-                // Server: http://127.0.0.1:5500
-                var socket = io.connect("https://games-jetfighters.herokuapp.com");
+                //Render: https://games-jetfighters.onrender.com
+                //Server: http://127.0.0.1:5500
+                var socket = io.connect("https://games-jetfighters.onrender.com");
                 socket.on("full room", (gamecode) => {
                     alert("Game " + gamecode + " is full.");
                     document.location.reload();

@@ -205,6 +205,6 @@ io.on("connection", (socket) => {
 });
 });
 });
-http.listen(process.env.PORT || 5500, "0.0.0.0", () => {
+http.listen(process.env.PORT || 5500, /*"127.0.0.1"*/ () => {
   console.log("listening on server");
 });
