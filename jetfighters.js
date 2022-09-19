@@ -10,6 +10,7 @@ var sound = document.createElement("audio");
 sound.src = "mixkit-body-punch-quick-hit-2153.wav";
 var bullets1 = [];
 var bullets2 = [];
+var won = false;
 let pickAColorFont = "80px arial";
 let nicknameTextFont = "0px arial";
 let nicknameFont = "0px arial";
@@ -626,7 +627,7 @@ function enterKeyPressNickname(event) {
                                             sound.play();
                                             radius = 0;
                                             scoreCounter1++;
-                                            if (scoreCounter1 >= 5) {
+                                            if (scoreCounter1 >= 5 && !won) {
                                                 alert(planeName1 + " won!");
                                                 document.location.reload();
                                             }
@@ -673,7 +674,8 @@ function enterKeyPressNickname(event) {
                                                     sound.play();
                                                     radius = 0;
                                                     scoreCounter2++;
-                                                    if (scoreCounter2 >= 5) {
+                                                    if (scoreCounter2 >= 5 && !won) {
+                                                        won = true
                                                         alert(name2 + " won!");
                                                         document.location.reload();
                                                     }
